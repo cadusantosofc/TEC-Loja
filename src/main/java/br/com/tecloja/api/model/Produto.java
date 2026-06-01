@@ -23,6 +23,10 @@ public class Produto {
     @Column(nullable = false)
     private int estoque;
 
+    // 1. ADICIONADO: Atributo para o Soft Delete (mapeado no banco de dados)
+    @Column(nullable = false)
+    private boolean ativo = true;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
@@ -42,4 +46,14 @@ public class Produto {
     public void setEstoque(int estoque) { this.estoque = estoque; }
     public Categoria getCategoria() { return categoria; }
     public void setCategoria(Categoria categoria) { this.categoria = categoria; }
+
+    // 2. ADICIONADO: Getter para o atributo boolean (convenção do Java usa "is" em vez de "get")
+    public boolean isAtivo() { 
+        return ativo; 
+    }
+
+    // 3. ADICIONADO: Setter para alterar o status do produto
+    public void setAtivo(boolean ativo) { 
+        this.ativo = ativo; 
+    }
 }
