@@ -23,7 +23,7 @@ public class AuthController {
     @PostMapping("/login")
     public Map<String, String> login(@RequestBody Map<String, String> request) {
         String username = request.get("username");
-        String senha = request.get("password");
+        String senha = request.get("senha");
 
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(username, senha)
